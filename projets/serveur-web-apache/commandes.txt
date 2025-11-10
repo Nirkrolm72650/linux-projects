@@ -1,0 +1,44 @@
+# 🧰 Commandes du projet : Serveur Web Apache sous Linux
+
+## 🔹 Mise à jour du système
+sudo apt update && sudo apt upgrade -y
+
+## 🔹 Installation d’Apache
+sudo apt install apache2 -y
+
+## 🔹 Vérification du statut du service
+sudo systemctl status apache2
+
+## 🔹 Activer le démarrage automatique
+sudo systemctl enable apache2
+
+## 🔹 Pare-feu (UFW)
+sudo ufw allow 'Apache'
+sudo ufw enable
+sudo ufw status
+
+## 🔹 Suppression de la page par défaut
+sudo rm /var/www/html/index.html
+
+## 🔹 Création d’une nouvelle page web
+sudo nano /var/www/html/index.html
+
+## 🔹 Permissions
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
+
+## 🔹 Vérification des ports et accès
+sudo ss -tuln | grep :80
+curl http://localhost
+
+## 🔹 Sécurisation avec Fail2Ban
+sudo apt install fail2ban -y
+sudo systemctl status fail2ban
+
+## 🔹 Maintenance
+sudo systemctl restart apache2
+sudo cat /var/log/apache2/error.log
+sudo cat /var/log/apache2/access.log
+
+## 🔹 Sauvegarde du site
+sudo tar -czvf /backup/html_backup.tar.gz /var/www/html
