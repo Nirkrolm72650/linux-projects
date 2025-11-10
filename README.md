@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="bannière.png" alt="Portfolio Admin Sys Linux" width="100%">
+</p>
+
 # 🐧 Portfolio – Administration Système Linux
 
 Bienvenue sur mon portfolio de projets d’administration système Linux.  
@@ -50,5 +54,13 @@ Chaque projet est conçu pour :
 - Ansible, Bash scripting, Cron  
 - Prometheus, Grafana, Zabbix  
 - CI/CD (GitLab Runner, Jenkins)
+
+---
+
+## 🧑‍💻 Auteur
+**Nom :** *Brandon GUYON*  
+**Rôle :** Apprenti Auditeur Cybersécurité / Futur Administrateur Système Linux  
+**Système principal :** Windows + VMware Workstation  
+**Objectif long terme :** Devenir Administrateur Linux + obtenir des certifications
 
 ---
