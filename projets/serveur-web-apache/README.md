@@ -73,6 +73,8 @@ Résultat attendu
 ● apache2.service - The Apache HTTP Server
      Active: active (running)
 ```
+Capture d'écran status d'Apache
+<img src="captures/apache-status.png" alt="Portfolio Admin Sys Linux" width="100%">
 
 Activation du service au démarrage
 ```bash
@@ -96,13 +98,14 @@ Apache                     ALLOW       Anywhere
 Apache (v6)                ALLOW       Anywhere (v6)
 ```
 
+Capture d'écran UFW
+<img src="captures/ufw-status.png" alt="Portfolio Admin Sys Linux" width="100%">
+
 ### 4️⃣ Vérification de l’installation
 Pour vérifier que tout fonctionne, on ouvre un navigateur puis on rentre l'adresse ip du serveur
 ```bash
 http://192.168.1.100
 ```
-
-*Mettre une capture d'écran de la page d'accueil du serveur*
 
 ### 5️⃣ Création d’un site personnalisé
 Supprimer la page par défaut :
@@ -147,6 +150,10 @@ sudo chmod -R 755 /var/www/html
 ```
 Ces commandes permettent d'assurrer que l'utilisateur *www-data* peut accéder au contenu
 
+Vérification du bon fonctionnement de la nouvelle page web
+
+<img src="captures/page-site.png" alt="Portfolio Admin Sys Linux" width="100%">
+
 ### 7️⃣ Sécurisation du serveur
 #### Installation de Fail2ban
 Fail2ban protège contre les tentatives de connexion abusives : 
@@ -158,6 +165,8 @@ Vérification du statut de Fail2ban
 ```bash
 sudo systemctl status fail2ban
 ```
+Capture d'écran status de Fail2ban
+<img src="captures/fail2ban-status.png" alt="Portfolio Admin Sys Linux" width="100%">
 
 ### 🧩 Schéma d’architecture
 ```yaml
@@ -186,3 +195,31 @@ sudo systemctl status fail2ban
 | Voir les logs d’erreur | `sudo cat /var/log/apache2/error.log`                     |
 | Voir les logs d’accès  | `sudo cat /var/log/apache2/access.log`                     |
 | Sauvegarder le site    | `sudo tar -czvf /backup/html_backup.tar.gz /var/www/html` |
+
+--- 
+### 🧠 Compétences acquises
+- Installation et configuration d’un service réseau.
+
+- Gestion des services avec systemctl.
+
+- Manipulation des fichiers et permissions Linux.
+
+- Notions de base sur la sécurité (pare-feu, Fail2Ban).
+
+- Compréhension de la structure d’un serveur web.
+
+- Rédaction d’une documentation technique claire et structurée.
+
+--- 
+### 📂 Structure du dossier projet
+```graphql
+serveur-web-apache/
+├── README.md               # Documentation du projet
+├── index.html              # Fichier web hébergé
+├── commandes.txt           # Liste des commandes utiles
+├── captures/
+│   ├── apache-status.png
+│   ├── ufw-status.png
+    └── fail2ban-status.png
+│   └── page-site.png
+```
