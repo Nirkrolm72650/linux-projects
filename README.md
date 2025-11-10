@@ -30,22 +30,6 @@ Chaque projet est conçu pour :
 
 ---
 
-## ⚙️ Structure du dépôt
-
-.
-├── README.md # Présentation générale
-├── projets/
-│ ├── serveur-web-apache/
-│ │ ├── README.md # Documentation complète du projet
-│ │ ├── index.html # Exemple de page web hébergée
-│ │ └── captures/ # Captures d’écran
-│ ├── serveur-web-nginx/
-│ │ └── README.md
-│ └── ...
-
-
----
-
 ## 🧠 Compétences développées
 
 ### 🔹 Administration Linux
