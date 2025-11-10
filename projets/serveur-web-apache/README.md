@@ -30,7 +30,7 @@ Ce projet m’a permis de comprendre :
 | Élément | Détail |
 |----------|--------|
 | Système d’exploitation | Ubuntu Server 24.04 LTS |
-| Nom d’hôte | `webserver01` |
+| Nom d’hôte | `ubuntu-server` |
 | Adresse IP | `192.168.1.100` |
 | Service principal | Apache2 |
 | Répertoire racine web | `/var/www/html` |
@@ -42,10 +42,10 @@ Ce projet m’a permis de comprendre :
 
 ## 🧱 Prérequis
 
-- Avoir une VM ou un serveur Ubuntu fonctionnel.  
+- Disposer d'une VM sous Ubuntu server 24.04 fonctionnel.  
 - Disposer des droits `sudo`.  
-- Accès réseau depuis la machine hôte.  
-- Connexion Internet pour installer les paquets.
+- Disposer d'un Accès réseau depuis la machine hôte.  
+- Disposer d'une connexion Internet pour installer les paquets.
 
 ---
 
