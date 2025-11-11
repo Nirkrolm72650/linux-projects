@@ -30,7 +30,7 @@ Ce projet permet de :
 | Élément | Détail |
 |----------|--------|
 | Système d’exploitation | Ubuntu Server 22.04 LTS |
-| Nom d’hôte | nginx-server01 |
+| Nom d’hôte | ubuntu-server |
 | Adresse IP locale | 192.168.1.110 |
 | Service principal | Nginx |
 | Répertoire web | `/var/www/mon-site` |
