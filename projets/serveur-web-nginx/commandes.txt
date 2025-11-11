@@ -1,0 +1,87 @@
+# 🧰 Commandes du projet : Serveur Web Nginx + Reverse Proxy + HTTPS (Auto-signé)
+
+## 🔹 Mise à jour du système
+sudo apt update && sudo apt upgrade -y
+
+## 🔹 Installation de Nginx
+sudo apt install nginx -y
+sudo systemctl status nginx
+sudo systemctl enable nginx
+
+## 🔹 Pare-feu
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+sudo ufw status
+
+## 🔹 Création du site web
+sudo mkdir -p /var/www/mon-site
+sudo chown -R www-data:www-data /var/www/mon-site
+sudo chmod -R 755 /var/www/mon-site
+sudo nano /var/www/mon-site/index.html
+
+## 🔹 Création d’un certificat SSL auto-signé
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/mon_site.key -out /etc/ssl/certs/mon_site.crt
+
+## 🔹 Configuration du site Nginx
+sudo nano /etc/nginx/sites-available/mon-site
+
+## 🔹 Exemple de contenu pour le site HTTPS
+# server {
+#     listen 443 ssl;
+#     server_name monsite.local;
+#
+#     ssl_certificate /etc/ssl/certs/mon_site.crt;
+#     ssl_certificate_key /etc/ssl/private/mon_site.key;
+#
+#     root /var/www/mon-site;
+#     index index.html;
+#
+#     location / {
+#         try_files $uri $uri/ =404;
+#     }
+# }
+#
+# server {
+#     listen 80;
+#     server_name monsite.local;
+#     return 301 https://$host$request_uri;
+# }
+
+## 🔹 Activation du site
+sudo ln -s /etc/nginx/sites-available/mon-site /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+
+## 🔹 Vérifications
+sudo ss -tuln | grep :443
+curl -vk https://localhost
+
+## 🔹 Configuration du reverse proxy (exemple)
+sudo nano /etc/nginx/sites-available/proxy.conf
+
+## 🔹 Exemple de contenu pour le reverse proxy
+# server {
+#     listen 80;
+#     server_name erp.local;
+#
+#     location / {
+#         proxy_pass http://192.168.1.100:8082;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#     }
+# }
+
+## 🔹 Activation du reverse proxy
+sudo ln -s /etc/nginx/sites-available/proxy.conf /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+
+## 🔹 Logs et supervision
+sudo tail -f /var/log/nginx/access.log
+sudo tail -f /var/log/nginx/error.log
+
+## 🔹 Redémarrage et maintenance
+sudo systemctl restart nginx
+sudo systemctl reload nginx
